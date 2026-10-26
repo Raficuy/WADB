@@ -1,0 +1,94 @@
+name: Build and Release RapiFy APK
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build Signed RapiFy Release APK
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Build Release and Debug APKs
+        run: ./gradlew assembleRelease assembleDebug --stacktrace
+
+      - name: Name APKs with app version
+        id: apk
+        run: |
+          VERSION_NAME=$(sed -nE 's/^[[:space:]]*versionName[[:space:]]*=[[:space:]]*"([^"]+)".*/\1/p' app/build.gradle.kts | head -n 1)
+          test -n "$VERSION_NAME" || { echo "Could not read app versionName"; exit 1; }
+          
+          RELEASE_APK="app/build/outputs/apk/release/rapify-v${VERSION_NAME}-release.apk"
+          DEBUG_APK="app/build/outputs/apk/debug/rapify-v${VERSION_NAME}-debug.apk"
+          
+          cp app/build/outputs/apk/release/app-release.apk "$RELEASE_APK"
+          cp app/build/outputs/apk/debug/app-debug.apk "$DEBUG_APK"
+          
+          echo "version=$VERSION_NAME" >> "$GITHUB_OUTPUT"
+          echo "release_path=$RELEASE_APK" >> "$GITHUB_OUTPUT"
+          echo "debug_path=$DEBUG_APK" >> "$GITHUB_OUTPUT"
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: v${{ steps.apk.outputs.version }}
+          VERSION_NAME: ${{ steps.apk.outputs.version }}
+        run: |
+          cat > RELEASE_NOTES.md <<'EOF'
+          ## RapiFy v3.5.1 — Widget Playback Fix & Flexible Resizing
+
+          - Fixed widget taps stopping playback: one single command path (MediaController) and play/pause now follows playWhenReady instead of isPlaying.
+          - Removed the duplicate next/previous dispatch that skipped two tracks per tap.
+          - Hardened the widget receiver: controller failures can no longer crash it or leave an ANR, and playback resumes after the service was stopped.
+          - Added full flexible widget resizing (minResizeWidth/minResizeHeight/maxResizeWidth/maxResizeHeight) for both Compact and Square widgets.
+          - Updater now verifies the DownloadManager status, stores the APK in app-private storage, handles the "install unknown apps" permission, and uses localized notifications.
+          - Fixed app language not applying on Android 12 and below, and localized the remaining widget/settings text.
+          - Published signed release and debug APKs.
+          EOF
+          
+          # Hapus rilis/tag lama jika versi yang sama sudah pernah dibuat agar tidak gagal
+          gh release delete "$RELEASE_TAG" --yes --cleanup-tag || true
+          
+          gh release create "$RELEASE_TAG" \
+            "${{ steps.apk.outputs.release_path }}" \
+            "${{ steps.apk.outputs.debug_path }}" \
+            --title "RapiFy $RELEASE_TAG (Widget Playback Fix & Flexible Resizing)" \
+            --notes-file RELEASE_NOTES.md \
+            --latest
+
+      - name: Upload APK build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: RapiFy-${{ steps.apk.outputs.version }}-APKs
+          path: |
+            ${{ steps.apk.outputs.release_path }}
+            ${{ steps.apk.outputs.debug_path }}
+          retention-days: 30
+
+
+      - name: Remove temporary signing keystore
+        if: always()
+        run: rm -f app/release.keystore

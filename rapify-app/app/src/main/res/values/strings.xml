@@ -1,0 +1,146 @@
+<resources>
+    <string name="app_name">RapiFy</string>
+    <string name="tab_home">Home</string>
+    <string name="tab_search">Search</string>
+    <string name="tab_library">Library</string>
+    <string name="search_placeholder">Search songs, artists, albums…</string>
+    <string name="trending_title">Trending Now</string>
+    <string name="library_title">Your Collection</string>
+    <string name="widget_compact_description">Compact RapiFy music player</string>
+    <string name="widget_square_description">Mini RapiFy music player</string>
+    <string name="widget_compact_name">RapiFy · Compact Player</string>
+    <string name="widget_square_name">RapiFy · Mini Player</string>
+    <string name="widget_placeholder_title">Open RapiFy to start playing</string>
+    <string name="widget_placeholder_artist">Your music, always close</string>
+    <string name="widget_artwork_desc">Album artwork</string>
+    <string name="widget_play_desc">Play or pause</string>
+    <string name="widget_previous_desc">Previous track</string>
+    <string name="widget_next_desc">Next track</string>
+
+    <!-- Common actions -->
+    <string name="action_close">Close</string>
+    <string name="common_selected">Selected</string>
+    <string name="common_calculating">Calculating…</string>
+    <string name="common_song_count">%1$d songs</string>
+    <string name="playback_channel_desc">Media playback controls</string>
+
+    <!-- Greetings -->
+    <string name="greeting_morning">Good morning</string>
+    <string name="greeting_afternoon">Good afternoon</string>
+    <string name="greeting_evening">Good evening</string>
+    <string name="greeting_night">Good night</string>
+    <string name="greeting_subtitle">Music that fits right now.</string>
+
+    <!-- Home Screen -->
+    <string name="home_play_again">Play again</string>
+    <string name="home_view_all">View all ›</string>
+    <string name="home_picks_for_you">Picks for you</string>
+    <string name="home_mix_personal">PERSONAL MIX</string>
+    <string name="home_no_songs_genre">No songs found for %1$s</string>
+    <string name="home_recently_played">Recently Played</string>
+    <string name="home_no_history">No listening history yet.</string>
+
+    <!-- Library Screen -->
+    <string name="lib_playlist_title">Library</string>
+    <string name="lib_tab_favorites">Favorite Songs</string>
+    <string name="lib_tab_my_playlists">My Playlists (%1$d)</string>
+    <string name="lib_fav_count">%1$d Favorite Songs</string>
+    <string name="lib_playlist_count">%1$d Playlists</string>
+    <string name="lib_fav_empty">No favorite songs yet</string>
+    <string name="lib_fav_empty_sub">Songs you heart will appear here</string>
+    <string name="lib_create_playlist">Create New Playlist</string>
+    <string name="lib_create_playlist_sub">Collect songs for your mood</string>
+    <string name="lib_no_playlists">No Playlists Yet</string>
+    <string name="lib_no_playlists_sub">Tap the button above to create a playlist</string>
+    <string name="lib_songs_count">%1$d songs</string>
+    <string name="lib_enter_name">Playlist Name</string>
+    <string name="lib_delete_title">Delete Playlist?</string>
+    <string name="lib_delete_confirm">Playlist \"%1$s\" and its %2$d songs will be permanently deleted.</string>
+    <string name="lib_playlist_empty">This playlist is empty. Add songs from search or home!</string>
+    <string name="lib_cancel">Cancel</string>
+    <string name="lib_delete">Delete</string>
+    <string name="lib_create">Create</string>
+    <string name="lib_sync_yt">Sync YT</string>
+
+    <!-- Search Screen -->
+    <string name="search_title">Search</string>
+    <string name="search_hint">Songs, artists, or genres…</string>
+    <string name="search_suggestions">Search Suggestions</string>
+    <string name="search_explore_categories">Explore Categories</string>
+    <string name="search_not_found">Song not found</string>
+    <string name="search_not_found_sub">Try using different keywords or check your spelling.</string>
+    <string name="search_results">Search Results</string>
+
+    <!-- Player Sheet -->
+    <string name="player_now_playing">NOW PLAYING</string>
+    <string name="player_remove_watch_later">Remove from Watch Later</string>
+    <string name="player_save_watch_later">Save to Watch Later</string>
+    <string name="player_add_to_playlist">Add to playlist</string>
+    <string name="player_share_song">Share song</string>
+    <string name="player_audio_settings">Audio settings</string>
+    <string name="player_lyrics">Lyrics</string>
+    <string name="player_lyrics_loading">Loading lyrics…</string>
+    <string name="player_lyrics_unavailable">Synced lyrics unavailable</string>
+    <string name="player_share_text">Listen to %1$s by %2$s: %3$s</string>
+    <string name="player_share_via">Share via</string>
+
+    <!-- Profile & Statistics Menu -->
+    <string name="profile_switch_account">Switch / Logout Account</string>
+    <string name="profile_connect_google">Connect Google Account</string>
+    <string name="profile_stats">Listening Statistics</string>
+    <string name="profile_total_plays">Total Plays</string>
+    <string name="profile_total_plays_val">%1$d times</string>
+    <string name="profile_artists_heard">Artists Heard</string>
+    <string name="profile_artists_heard_val">%1$d artists</string>
+    <string name="profile_stats_not_enough">Not enough data. Play more songs to see chart!</string>
+    <string name="profile_chart_title">ARTIST FREQUENCY CHART</string>
+    <string name="profile_top_artists">Top %1$d</string>
+    <string name="profile_top_ranking">Top Artist Rankings</string>
+
+    <!-- Settings Dialog -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_language">App Language</string>
+    <string name="settings_language_desc">Change app display language</string>
+    <string name="lang_system">System Default</string>
+    <string name="lang_id">Bahasa Indonesia</string>
+    <string name="lang_en">English</string>
+    <string name="settings_audio_quality">Audio Streaming Quality</string>
+    <string name="settings_theme">App Theme</string>
+    <string name="settings_theme_system">System Default</string>
+    <string name="settings_theme_dark">Dark (OLED Black)</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_system_desc">Follows your device theme</string>
+    <string name="settings_theme_dark_desc">OLED black saves battery</string>
+    <string name="settings_theme_light_desc">Clean monochrome white</string>
+    <string name="settings_lyrics_trans">Lyrics Translation</string>
+    <string name="settings_lyrics_trans_desc">Show translated lyrics meaning</string>
+    <string name="settings_cache">Storage &amp; Cache</string>
+    <string name="settings_cache_size">Cache Size: %1$s</string>
+    <string name="settings_cache_clear">Clear</string>
+    <string name="settings_cache_cleared">Cache cleared</string>
+    <string name="settings_update">App Update</string>
+    <string name="settings_update_check">Check Update</string>
+    <string name="settings_update_checking">Checking GitHub…</string>
+    <string name="settings_update_latest">RapiFy is up to date!</string>
+    <string name="settings_update_found">New version found: v%1$s</string>
+    <string name="settings_about_desc">Open source, zero ads &amp; ultra lightweight</string>
+
+    <!-- Update Dialog -->
+    <string name="update_available">Update Available</string>
+    <string name="update_whats_new">What\'s new:</string>
+    <string name="update_later">Later</string>
+    <string name="update_now">Update</string>
+
+    <!-- Update notifications -->
+    <string name="update_channel_name">RapiFy updates</string>
+    <string name="update_channel_desc">Notifications about RapiFy app updates</string>
+    <string name="update_download_title">RapiFy v%1$s</string>
+    <string name="update_download_desc">Downloading app update…</string>
+    <string name="update_ready_title">Update ready to install!</string>
+    <string name="update_ready_text">RapiFy v%1$s downloaded. Tap to install.</string>
+    <string name="update_ready_bigtext">RapiFy v%1$s has finished downloading. Tap here to install the update now.</string>
+    <string name="update_install_now">Install now</string>
+    <string name="update_permission_title">Allow app installs</string>
+    <string name="update_permission_text">Allow RapiFy to install unknown apps, then tap the update notification again.</string>
+    <string name="update_download_failed">Update download failed. Please try again.</string>
+</resources>
